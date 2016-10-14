@@ -42,7 +42,8 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <cunistd>
+
+#include <unistd.h>
 
 #include "ctaskbar.hxx"
 #include "cstartwindow.hxx"
@@ -735,7 +736,7 @@ int nxwm_main(int argc, char *argv[])
   printf("nxwm_main: Waiting for touchscreen calibration\n");
   while (!g_nxwmtest.touchscreen->isCalibrated())
     {
-      std::sleep(2);
+      ::sleep(2);
     }
 
   // This is how we would then recover the calibration data.  After the calibration

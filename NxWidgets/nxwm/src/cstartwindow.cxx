@@ -40,9 +40,10 @@
 #include <nuttx/config.h>
 
 #include <cstdlib>
-#include <cfcntl>
-#include <csched>
 #include <cerrno>
+
+#include <sched.h>
+#include <fcntl.h>
 
 #include "cwidgetcontrol.hxx"
 

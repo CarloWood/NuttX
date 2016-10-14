@@ -41,10 +41,10 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <cunistd>
 #include <ctime>
 
 #include <fcntl.h>
+#include <unistd.h>
 #include <semaphore.h>
 #include <sched.h>
 #include <debug.h>
@@ -476,10 +476,10 @@ int CNxConsole::nxconsole(int argc, char *argv[])
   (void)std::fclose(stderr);
 
 #ifdef CONFIG_NXCONSOLE_NXKBDIN
-  (void)std::dup2(fd, 0);
+  (void)::dup2(fd, 0);
 #endif
-  (void)std::dup2(fd, 1);
-  (void)std::dup2(fd, 2);
+  (void)::dup2(fd, 1);
+  (void)::dup2(fd, 2);
 
 #ifdef CONFIG_NXCONSOLE_NXKBDIN
   (void)std::fdopen(0, "r");
@@ -489,7 +489,7 @@ int CNxConsole::nxconsole(int argc, char *argv[])
 
   // And we can close our original driver file descriptor
 
-  std::close(fd);
+  ::close(fd);
 
   // Inform the parent thread that we successfully initialized
 

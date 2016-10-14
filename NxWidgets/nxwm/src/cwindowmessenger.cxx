@@ -39,9 +39,9 @@
 
 #include <nuttx/config.h>
 
-#include <cfcntl>
 #include <cerrno>
 
+#include <fcntl.h>
 #include <debug.h>
 
 #include "nxwmconfig.hxx"

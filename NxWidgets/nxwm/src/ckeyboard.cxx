@@ -39,13 +39,13 @@
 
 #include <nuttx/config.h>
 
-#include <cunistd>
 #include <cerrno>
-#include <cfcntl>
+#include <cassert>
 
 #include <sched.h>
+#include <unistd.h>
 #include <pthread.h>
-#include <assert.h>
+#include <fcntl.h>
 #include <debug.h>
 
 #include "nxwmconfig.hxx"
@@ -99,7 +99,7 @@ CKeyboard::~CKeyboard(void)
 
   if (m_kbdFd >= 0)
     {
-      std::close(m_kbdFd);
+      ::close(m_kbdFd);
     }
 }
 
@@ -173,7 +173,7 @@ FAR void *CKeyboard::listener(FAR void *arg)
 
   // Open the keyboard device
 
-  This->m_kbdFd = std::open(CONFIG_NXWM_KEYBOARD_DEVPATH, O_RDONLY);
+  This->m_kbdFd = ::open(CONFIG_NXWM_KEYBOARD_DEVPATH, O_RDONLY);
   if (This->m_kbdFd < 0)
     {
       gdbg("ERROR Failed to open %s for reading: %d\n",

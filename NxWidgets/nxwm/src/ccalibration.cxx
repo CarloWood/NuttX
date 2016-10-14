@@ -37,11 +37,11 @@
  * Included Files
  ****************************************************************************/
 
-#include <cunistd>
 #include <cerrno>
+#include <cassert>
 
 #include <sched.h>
-#include <assert.h>
+#include <unistd.h>
 #include <debug.h>
 
 #include "nxwmconfig.hxx"
@@ -479,7 +479,7 @@ FAR void *CCalibration::calibration(FAR void *arg)
         {
           // Sleep for a while (or until we receive a signal)
 
-          std::usleep(500*1000);
+          ::usleep(500*1000);
         }
       else
         {
